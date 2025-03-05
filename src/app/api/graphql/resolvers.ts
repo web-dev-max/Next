@@ -1,31 +1,14 @@
-import { prisma } from "@/lib/prisma";
+import productResolvers from "./resolvers/productResolvers";
+import authResolvers from "./resolvers/authResolvers";
+import userResolvers from "./resolvers/userResolvers";
 
 const resolvers = {
     Query: {
-        getAllProducts: async () => {
-            try {
-                const products = await prisma.product.findMany();
-      
-                return products.map(product => ({
-                    ...product,
-                    createdAt: product.created_at.toISOString(),
-                    updatedAt: product.updated_at.toISOString(),
-                }));
-            } catch (error) {
-                console.error(error, 'Ошибка получение всех продуктов');
-            }
-        },
-
-        getProductID: async (id: string) => {
-            try {
-                return await prisma.product.findUnique(id)
-            } catch (error) {
-                console.error(error, 'Ошибка получение продукта');
-            }
-        }
+        ...productResolvers.Query,
     },
     Mutation: {
-
+        ...authResolvers.Mutation,
+        ...userResolvers.Mutation,
     }
 };
 

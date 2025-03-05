@@ -7,7 +7,18 @@ export const GET_PRODUCTS = gql`
       name
       price
       description
-      category
+      image
+    }
+  }
+`;
+
+export const GET_PRODUCT = gql`
+  query GetProductById($id: ID!) {
+    getProductById(id: $id) {
+      id
+      name
+      price
+      description
       image
       amount
     }

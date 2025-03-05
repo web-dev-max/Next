@@ -11,6 +11,23 @@ const typeDefs = `#graphql
         updatedAt: String!
     }
 
+    type User {
+        id: ID!
+        name: String!
+        email: String!
+        password: String!
+        isAdmin: Boolean!
+    }
+
+    type AuthPayload {
+        user: User!
+        token: String!
+    }
+
+    type MessageResponse {
+        message: String!
+    }
+
     type Query {
         getAllProducts: [Product]
         getProductById(id: ID!): Product
@@ -25,6 +42,17 @@ const typeDefs = `#graphql
             image: String,
             amount: Int!
         ): Product
+        registerUser(
+            name: String!,
+            email: String!,
+            password: String!,
+            isAdmin: Boolean!
+        ): AuthPayload
+        loginUser(
+            email: String!,
+            password: String!,
+        ): AuthPayload
+        deleteUser(id: Int!): MessageResponse
     }
 `;
 export default typeDefs;

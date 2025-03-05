@@ -1,10 +1,9 @@
-import ClientComponents from "@/app/components/ClientComponents";
+import HomePage from "@/app/components/home/page";
 
-export default function Home() {
+export default function App() {
   return (
-    <div>
-      <h2>Hello!</h2>
-      <ClientComponents />
-    </div>
+    <>
+      <HomePage />
+    </>
   );
 }
