@@ -23,7 +23,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Examples of queries 
 
-### localhost:3000/api/graphql - Apollo Server
+### Apollo Server
+[http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
 
 ```bash
 # Удаление пользователя
