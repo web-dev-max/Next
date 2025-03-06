@@ -1,8 +1,7 @@
 "use client"
 
-import { GET_PRODUCT } from "@/lib/fetch-products";
+import { GET_PRODUCT } from "@/lib/fetch-graphql/products";
 import { useQuery } from "@apollo/client";
-import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import "./styles.scss";
 
@@ -20,7 +19,6 @@ const ProductPage = () => {
 
     return (
         <div className="product">
-            <Link href={'/'}>На главную</Link>
             <h1>{name}</h1>
             <img src={image} alt={name} width={200} />
             <p>{description}</p>

@@ -40,12 +40,15 @@ const authResolvers = {
 
             } catch (error) {
                 console.error(error, 'Ошибка при регистрации');
+
+                if (error instanceof Error) {
+                    throw error;
+                }
             }
         },
         
         loginUser: async (_: unknown, args: { email: string, password: string }) => {
             try {
-
                 const user = await findUserDetail(args.email);
                 if (!user)  throw new Error('Пользователь не существует');
 
@@ -64,7 +67,11 @@ const authResolvers = {
                     token
                 };
             } catch (error) {
-                console.error('Ошибка при авторизации пользователя', error)
+                console.error('Ошибка при авторизации пользователя!', error);
+
+                if (error instanceof Error) {
+                    throw error;
+                }
             }
         }
     }

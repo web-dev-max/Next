@@ -1,7 +1,7 @@
 "use client"
 
 import { IProduct } from "@/interfaces/products";
-import { GET_PRODUCTS } from "@/lib/fetch-products";
+import { GET_PRODUCTS } from "@/lib/fetch-graphql/products";
 import { useQuery } from "@apollo/client";
 import "./styles.scss";
 import Link from "next/link";
@@ -18,7 +18,7 @@ const HomePage = () => {
       <div className="products-list">
         {data.getAllProducts.map((product: IProduct) => (
           <Link
-            href={`/components/product/${product.id}`} 
+            href={`/product/${product.id}`}
             key={product.id} 
             className="products-item"
           >
