@@ -1,7 +1,7 @@
+import { Maybe } from "yup";
+
 export interface IUser {
-   id: number;
-   name?: string;
+   name?: Maybe<string | undefined>;
    email: string;
    password: string;
-   isAdmin: boolean;
 }

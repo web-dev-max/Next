@@ -1,0 +1,51 @@
+.container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    button {
+        max-width: 350px;
+        width: 100%;
+        padding: 20px;
+        margin-top: 30px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.5s;
+        text-transform: uppercase;
+    }
+}
+
+.form-group {
+    max-width: 350px;
+    width: 100%;
+
+    input {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}

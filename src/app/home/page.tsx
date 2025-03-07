@@ -1,7 +1,7 @@
 "use client"
 
 import { IProduct } from "@/interfaces/products";
-import { GET_PRODUCTS } from "@/lib/fetch-graphql/products";
+import { GET_PRODUCTS } from "@/lib/request-graphql/products";
 import { useQuery } from "@apollo/client";
 import "./styles.scss";
 import Link from "next/link";
