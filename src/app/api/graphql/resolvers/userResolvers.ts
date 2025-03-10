@@ -1,6 +1,17 @@
+import { authUser } from "@/app/middleware";
 import { prisma } from "@/lib/prisma";
+import { NextRequest } from "next/server";
 
 const userResolvers = {
+    Query: {
+        getUser: async (_: unknown, __: unknown, { req }: { req: NextRequest }) => {
+            try {
+                return await authUser(req);
+            } catch (error) {
+                console.error(error, 'Ошибка получение данных пользователя');
+            }
+        },
+    },
     Mutation: {
         deleteUser: async (_: unknown, args: { id: number }) => {
             try {

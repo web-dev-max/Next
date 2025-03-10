@@ -31,6 +31,7 @@ const typeDefs = `#graphql
     type Query {
         getAllProducts: [Product]
         getProductById(id: ID!): Product
+        getUser: User
     }
 
     type Mutation {

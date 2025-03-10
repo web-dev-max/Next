@@ -5,6 +5,7 @@ import userResolvers from "./resolvers/userResolvers";
 const resolvers = {
     Query: {
         ...productResolvers.Query,
+        ...userResolvers.Query,
     },
     Mutation: {
         ...authResolvers.Mutation,
