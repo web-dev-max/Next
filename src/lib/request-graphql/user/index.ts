@@ -9,3 +9,11 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const REMOVE_USER = gql`
+  mutation LogoutUser {
+    logoutUser {
+      message
+    }
+  }
+`;

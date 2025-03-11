@@ -1,4 +1,5 @@
-import { authUser } from "@/app/middleware";
+import { authUser } from "@/lib/auth-user";
+import { authRemoveCookie } from "@/lib/cookie/authRemoveCookie";
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
@@ -13,6 +14,17 @@ const userResolvers = {
         },
     },
     Mutation: {
+        // addImageUser: async () => {
+            
+        // },
+        logoutUser: async () => {
+            try {
+                return await authRemoveCookie();
+            } catch (error) {
+                console.error('Ошибка при выходе пользователя!', error);
+                throw error;
+            }
+        },
         deleteUser: async (_: unknown, args: { id: number }) => {
             try {
                 const user = await prisma.user.findUnique({

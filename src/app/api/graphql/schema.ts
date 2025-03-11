@@ -54,6 +54,7 @@ const typeDefs = `#graphql
             password: String!,
         ): AuthPayload
         deleteUser(id: Int!): MessageResponse
+        logoutUser: MessageResponse
     }
 `;
 export default typeDefs;

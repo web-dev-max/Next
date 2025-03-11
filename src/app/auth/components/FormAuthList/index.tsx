@@ -1,4 +1,4 @@
-import { IUser } from "@/interfaces/user";
+import { IUser } from "@/lib/interfaces/user";
 import { FC, FormEventHandler } from "react";
 import { FieldErrors, SubmitHandler, UseFormWatch } from "react-hook-form";
 import "./styles.scss";

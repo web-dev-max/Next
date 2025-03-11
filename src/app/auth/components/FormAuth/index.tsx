@@ -2,7 +2,7 @@ import { LOGIN_AUTH, REGISTER_USER } from "@/lib/request-graphql/auth";
 import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IUser } from "@/interfaces/user";
+import { IUser } from "@/lib/interfaces/user";
 import authSchema from "@/lib/yup-schema";
 import { FC } from "react";
 import FormAuthList from "../FormAuthList";

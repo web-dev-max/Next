@@ -1,10 +1,11 @@
 "use client"
 
-import { IProduct } from "@/interfaces/products";
+import { IProduct } from "@/lib/interfaces/products";
 import { GET_PRODUCTS } from "@/lib/request-graphql/products";
 import { useQuery } from "@apollo/client";
 import "./styles.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 const HomePage = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
@@ -23,9 +24,11 @@ const HomePage = () => {
             className="products-item"
           >
             <h2>{product.name}</h2>
-            <p>{product.description}</p>
+            <div className="products-desc">
+              <p>{product.description}</p>
+            </div>
             <p>Цена: ${product.price}</p>
-            <img src={product.image} width={100} />
+            <Image src={product.image} width={100} height={100} alt={product.name}/>
           </Link>
         ))}
       </div>

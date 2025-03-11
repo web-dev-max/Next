@@ -4,6 +4,7 @@ import { GET_PRODUCT } from "@/lib/request-graphql/products";
 import { useQuery } from "@apollo/client";
 import { notFound, useParams } from "next/navigation";
 import "./styles.scss";
+import Image from "next/image";
 
 const ProductPage = () => {
     const params = useParams();
@@ -20,7 +21,7 @@ const ProductPage = () => {
     return (
         <div className="product">
             <h1>{name}</h1>
-            <img src={image} alt={name} width={200} />
+            <Image src={image} alt={name} width={200} height={200} />
             <p>{description}</p>
             <p>Цена: ${price}</p>
             <p>Количество: {amount}шт.</p>

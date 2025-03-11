@@ -3,16 +3,25 @@
 import Link from "next/link";
 import "./styles.scss";
 import { useEffect } from "react";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import useUserStore from "@/store/useUserStore";
 import Cabinet from "@/assets/svg/cabinet";
+import { useMutation } from "@apollo/client";
+import { REMOVE_USER } from "@/lib/request-graphql/user";
 
 const Header = () => {
   const { isAuth, checkIsAuth, logout } = useUserStore();
+  const [logoutUser, { loading }] = useMutation(REMOVE_USER);
 
   useEffect(() => {
     checkIsAuth();
   }, [checkIsAuth]);
+
+  const handleLogout = async () => {
+    await logoutUser();
+    message.info('Выход выполнен');
+    logout();
+  };
 
   return (
     <header>
@@ -25,7 +34,15 @@ const Header = () => {
         }
       {isAuth &&
         <div className="nav-auth">
-          <Button type="primary" onClick={logout}>Выйти из аккаунта</Button>
+          <Link href={'/'}>
+            <Button 
+              type="primary" 
+              onClick={handleLogout}
+              disabled={loading}
+            >
+                Выйти из аккаунта
+            </Button>
+          </Link>
           <Link className="nav-auth-cabinet" href={'/cabinet'}>
             <Cabinet />
           </Link>

@@ -2,18 +2,9 @@
 
 import { GET_USER } from "@/lib/request-graphql/user";
 import { useQuery } from "@apollo/client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 const CabinetPage = () => {
     const { loading, data } = useQuery(GET_USER);
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!loading && !data?.getUser) {
-            router.push("/");
-        }
-    }, [loading, data, router])
 
     if (loading) return <p>Загрузка...</p>;
 

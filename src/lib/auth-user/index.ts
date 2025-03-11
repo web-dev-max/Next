@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { NextRequest } from "next/server"
-import { prisma } from '../lib/prisma';
+import { prisma } from '../prisma';
 
 export const authUser = async (req: NextRequest) => {
     const authHeader = req.headers.get('authorization')?.split(' ')[1];
