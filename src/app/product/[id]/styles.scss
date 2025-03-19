@@ -2,4 +2,20 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 40px 20px;
+
+    &-block {
+        display: flex;
+        gap: 80px;
+    }
+
+    p {
+        max-width: 1000px;
+        width: 100%;
+        line-height: 25px;
+        font-size: 20px;
+    }
 }

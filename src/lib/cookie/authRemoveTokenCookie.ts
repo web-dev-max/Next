@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-export const authRemoveCookie = async () => {
+export const authRemoveTokenCookie = async () => {
     (await cookies()).set("token", "", {
         httpOnly: true,
         secure: false,

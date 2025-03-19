@@ -19,11 +19,30 @@
     &-item {
         max-width: 400px;
         width: 100%;
-        border: 1px solid black;
         border-radius: 5px;
-        height: 400px;
+        height: 450px;
         padding: 15px;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+
+        img {
+            object-fit: contain;
+        }
+
+        h2 {
+            color: #000000;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        
+        p {
+            color: #1677ff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 
     &-desc {

@@ -1,0 +1,22 @@
+.cabinet {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    &-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    button {
+        background-color: #f51717;
+    }
+}

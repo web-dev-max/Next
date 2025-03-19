@@ -16,6 +16,7 @@ const typeDefs = `#graphql
         name: String!
         email: String!
         password: String!
+        image: String!
         isAdmin: Boolean!
     }
 

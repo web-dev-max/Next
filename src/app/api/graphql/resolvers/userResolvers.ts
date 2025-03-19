@@ -1,5 +1,5 @@
 import { authUser } from "@/lib/auth-user";
-import { authRemoveCookie } from "@/lib/cookie/authRemoveCookie";
+import { authRemoveTokenCookie } from "@/lib/cookie/authRemoveTokenCookie";
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
@@ -19,7 +19,7 @@ const userResolvers = {
         // },
         logoutUser: async () => {
             try {
-                return await authRemoveCookie();
+                return await authRemoveTokenCookie();
             } catch (error) {
                 console.error('Ошибка при выходе пользователя!', error);
                 throw error;
@@ -28,17 +28,20 @@ const userResolvers = {
         deleteUser: async (_: unknown, args: { id: number }) => {
             try {
                 const user = await prisma.user.findUnique({
-                    where: { id: args.id }
+                    where: { id: Number(args.id) }
                 });
                 if (!user) throw new Error("Пользователь не найден");
 
                 await prisma.user.delete({
                     where: { id: args.id }
                 });
+
+                await authRemoveTokenCookie();
                 
                 return { message: "Пользователь успешно удалён" };
             } catch (error) {
                 console.error(error, 'Ошибка при удалении пользователя');
+                throw new Error("Ошибка сервера при удалении пользователя");
             }
         },
     }

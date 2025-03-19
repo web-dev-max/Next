@@ -1,32 +1,25 @@
-"use client"
-
-import { GET_PRODUCT } from "@/lib/request-graphql/products";
-import { useQuery } from "@apollo/client";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import "./styles.scss";
 import Image from "next/image";
+import { getProduct } from "@/lib/request-graphql/products";
 
-const ProductPage = () => {
-    const params = useParams();
-    const { loading, error, data } = useQuery(GET_PRODUCT, {
-        variables: { id: params.id },
-    });
+export default async function ProductPage({ params }: { params: { id: string } }) {
+    const { id } = await params;
+    const product = await getProduct(id);
 
-    if (loading) return <p>Загружаем...</p>;
-    if (error) return <p>Ошибка: {error.message}</p>;
-    if (!data?.getProductById) return notFound();
-
-    const { name, description, price, image, amount } = data.getProductById;
+    if (!product) return notFound();
 
     return (
         <div className="product">
-            <h1>{name}</h1>
-            <Image src={image} alt={name} width={200} height={200} />
-            <p>{description}</p>
-            <p>Цена: ${price}</p>
-            <p>Количество: {amount}шт.</p>
+            <h1>{product.name}</h1>
+            <div className="product-block">
+                <Image src={product.image} alt={product.name} width={200} height={200} />
+                <div className="product-block-item">
+                    <p>Цена: ${product.price}</p>
+                    <p>Количество: {product.amount} шт.</p>
+                </div>
+            </div>
+            <p>{product.description}</p>
         </div>
-    )
+    );
 }
-
-export default ProductPage;
