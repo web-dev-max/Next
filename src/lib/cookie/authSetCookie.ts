@@ -7,8 +7,9 @@ export const authSetCookie = async (
     if (!user) {
         throw new Error('Пользователь не найден или недействителен');
     }
+    
     const token = generateToken({ id: user.id });
-
+    
     (await cookies()).set("token", token, {
         httpOnly: true,
         secure: false,

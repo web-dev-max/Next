@@ -1,4 +1,4 @@
-import { authUser } from "@/lib/auth-user";
+import { authUser } from "@/lib/auth";
 import { authRemoveTokenCookie } from "@/lib/cookie/authRemoveTokenCookie";
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";

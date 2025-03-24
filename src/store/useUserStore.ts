@@ -6,7 +6,9 @@ const useUserStore = create<IUseUserStore>()((set) => ({
     isAuth: false,
     user: null,
 
-    setUser: (userData) => set({ user: userData }),
+    setAuth: (auth: boolean) => {
+        set({ isAuth: auth });
+    },
 
     checkIsAuth: () => {
         set({ isAuth: !!localStorage.getItem('token') });

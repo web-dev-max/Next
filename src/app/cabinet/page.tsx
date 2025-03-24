@@ -9,6 +9,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import useUserStore from "@/store/useUserStore";
 import { useRouter } from "next/navigation";
 import Loading from "../loading";
+import Link from "next/link";
 
 const CabinetPage = () => {
     const { logout } = useUserStore();
@@ -39,10 +40,15 @@ const CabinetPage = () => {
                 <Image src={data.getUser.image} width={100} height={100} alt={data.getUser.name} />
             </div>
             <p>Email: {data.getUser.email}</p>
-            {data.getUser.isAdmin && <p>Админ</p>}
+            {data.getUser.isAdmin && 
+                <Link href={'/admin'}>
+                    <Button type="primary">Админ-панель</Button>
+                </Link>
+            }
             <Button 
                 type="primary" 
                 disabled={deleteLoading} 
+                className="delete-account"
                 onClick={() => handleDeleteUser(Number(data.getUser.id))}
             >
                 Удалить аккаунт

@@ -10,6 +10,7 @@ export async function getProducts() {
             name
             image
             price
+            amount
           }
         }
       `,

@@ -19,4 +19,4 @@ export const authUser = async (req: NextRequest) => {
         console.error(error, 'Ошибка аутентификации')
     }
 
-}
+};
